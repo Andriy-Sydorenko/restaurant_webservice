@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>{{ dish_type.name }}</title>
+{% endblock %}
+
+{% block content %}
+  <h2>
+    Name: {{ dish_type.name }}
+    {% if user.is_superuser %}
+    <a class="btn btn-primary" href="{% url 'restaurant:dish-type-update' pk=dish_type.id %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'restaurant:dish-type-delete' pk=dish_type.id %}">Delete</a>
+    {% endif %}
+  </h2>
+
+  <div class="ml-3">
+    <h3>Dishes with this dish type:</h3>
+    {% for dish in dish_type.dishes.all %}
+      <hr>
+      <p class="text-muted"><strong>ID: </strong>{{ dish.id }}</p>
+      <p><strong>Full name: </strong><a href="{% url 'restaurant:dish-detail' pk=dish.id %}">{{ dish.name }} (price: {{ dish.price }})</a>
+      </p>
+    {% empty %}
+      <h5>No dish types!</h5>
+    {% endfor %}
+
+  </div>
+{% endblock %}

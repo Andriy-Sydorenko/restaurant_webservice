@@ -1,0 +1,38 @@
+.sidebar-container {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 100%;
+  background-color: #f0f0f0;
+  padding-top: 60px;
+  transition: transform 0.3s;
+  overflow-y: auto;
+}
+
+.sidebar-left {
+  width: 200px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.sidebar-right {
+  flex: 1;
+}
+
+.sidebar-nav {
+  padding-left: 20px;
+}
+
+.sidebar-left {
+  transform: translateX(-200px);
+}
+
+.sidebar-container:hover .sidebar-left {
+  transform: translateX(0);
+}

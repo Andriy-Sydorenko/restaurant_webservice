@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>Cooks</title>
+{% endblock %}
+
+{% block content %}
+  <h1>
+    Cooks
+  </h1>
+  {% if user.is_superuser %}
+  <a class="btn btn-primary" href="{% url 'restaurant:cook-create' %}">Add the cook</a>
+  <hr>
+  {% endif %}
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔍">
+
+  {% if cook_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Full name</th>
+        <th>Years of experience</th>
+        {% if user.is_superuser %}
+        <th>Update</th>
+        <th>Delete</th>
+        {% endif %}
+      </tr>
+      {% for cook in cook_list %}
+        <tr>
+          <td>
+            {{ cook.id }}
+          </td>
+          <td>
+            <a class="list-item" href="{{ cook.get_absolute_url }}">{{ cook.username }}</a>
+          </td>
+          <td>
+            {{ cook.first_name }} {{ cook.last_name }}
+          </td>
+          <td>
+            {{ cook.years_of_experience|default_if_none:"" }}
+          </td>
+          {% if user.is_superuser %}
+            <td>
+              <a class="update" href="{% url 'restaurant:cook-update' pk=cook.id %}">Update</a>
+            </td>
+            <td>
+              <a class="delete" href="{% url 'restaurant:cook-delete' pk=cook.id %}">Delete</a>
+            </td>
+          {% endif %}
+
+        </tr>
+      {% endfor %}
+
+    </table>
+  {% else %}
+    <p>There are no cooks!</p>
+  {% endif %}
+  </form>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>{{ dish.title }}</title>
+{% endblock %}
+
+{% block content %}
+  <h2>
+    Name: {{ dish.name }}
+    {% if user.is_authenticated and user in dish.cooks.all %}
+    <a class="btn btn-primary" href="{% url 'restaurant:dish-update' pk=dish.id %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
+    {% elif user.is_superuser %}
+      <a class="btn btn-primary" href="{% url 'restaurant:dish-update' pk=dish.id %}">Edit</a>
+      <a class="btn btn-danger" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
+    {% endif %}
+  </h2>
+  <p><strong>Price: </strong>${{ dish.price }}</p>
+  <p><strong>Dish type: </strong>{{ dish.dish_type.name }}</p>
+  <p><strong>Description: </strong>{{ dish.description }}</p>
+
+  <div class="ml-3">
+    <h3>Cooks</h3>
+
+    <form method="post" action="{% url 'restaurant:dish-update-cook' pk=dish.id %}">
+      {% csrf_token %}
+      {% if user in dish.cooks.all %}
+        <input class="btn btn-danger" type="submit" value="I can't cook this dish">
+      {% else %}
+        <input class="btn btn-primary" type="submit" value="I can cook this dish">
+      {% endif %}
+
+    </form>
+    {% for cook in dish.cooks.all %}
+      <hr>
+      <p class="text-muted"><strong>ID: </strong>{{ cook.id }}</p>
+      <p><strong>Username: </strong><a href="{{ cook.get_absolute_url }}">{{ cook.username }}</a></p>
+      <p><strong>Full name: </strong>{{ cook.first_name }} {{ cook.last_name }}</p>
+    {% empty %}
+      <h5>No dishes!</h5>
+    {% endfor %}
+
+  </div>
+{% endblock %}

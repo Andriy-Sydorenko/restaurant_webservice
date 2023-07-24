@@ -1,0 +1,32 @@
+<nav>
+  <ul class="topmenu">
+    {% if user.is_authenticated %}
+    <li><a class="down" href="{% url 'restaurant:cook-detail' pk=user.id %}">User: <strong>{{ user.username }}</strong></a>
+      <ul class="submenu">
+        {% if user.is_superuser %}
+        <li><a href="http://127.0.0.1:8000/admin/">Admin panel</a></li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </li>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+    <br>
+
+    <li><a href="{% url 'restaurant:index' %}">Home</a></li>
+    <li><a href="{% url 'restaurant:dish-list' %}">All dishes</a></li>
+    <li><a href="{% url 'restaurant:cook-list' %}">All cooks</a></li>
+    <li><a href="{% url 'restaurant:dish-type-list' %}">All dish types</a></li>
+
+    <br>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'restaurant:dish-create' %}">Add dish</a></li>
+    {% endif %}
+    {% if user.is_superuser %}
+      <li><a href="{% url 'restaurant:dish-type-create' %}">Add dish type</a></li>
+      <li><a href="{% url 'restaurant:cook-create' %}">Add cook</a></li>
+    {% endif %}
+  </ul>
+</nav>

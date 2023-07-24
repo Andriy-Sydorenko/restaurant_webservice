@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>Dishes</title>
+{% endblock %}
+
+{% block content %}
+  <h1>
+    Dishes
+  </h1>
+  {% if user.is_authenticated %}
+  <a class="btn btn-primary" href="{% url 'restaurant:dish-create' %}">Add the dish</a>
+  <hr>
+  {% endif %}
+  <form action="" method="get" class="form-inline">
+    {{ search_form|crispy }}
+    <input class="btn btn-secondary" type="submit" value="🔍">
+  {% if dish_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Dish type</th>
+        {% if user.is_authenticated %}
+        <th>Update</th>
+        <th>Delete</th>
+        {% endif %}
+
+      </tr>
+    {% for dish in dish_list %}
+      <tr>
+        <td>
+          {{ dish.id }}
+        </td>
+        <td>
+          <a class="list-item" href="{% url 'restaurant:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+        </td>
+        <td>
+          {{ dish.description|truncatewords:15 }}
+        </td>
+        <td>
+          ${{ dish.price }}
+        </td>
+        <td>
+          {{ dish.dish_type }}
+        </td>
+        {% if user.is_superuser %}
+          <td>
+            <a class="update" href="{% url 'restaurant:dish-update' pk=dish.id %}">Update</a>
+          </td>
+          <td>
+            <a class="delete" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
+          </td>
+        {% elif user.is_authenticated and user in dish.cooks.all%}
+          <td>
+            <a class="update" href="{% url 'restaurant:dish-update' pk=dish.id %}">Update</a>
+          </td>
+          <td>
+            <a class="delete" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
+          </td>
+        {% elif user.is_authenticated and user not in dish.cooks.all%}
+          {# it should be empty, for table to look properly #}
+          <td></td>
+          <td></td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+
+    </table>
+
+  {% endif %}
+  </form>
+{% endblock %}

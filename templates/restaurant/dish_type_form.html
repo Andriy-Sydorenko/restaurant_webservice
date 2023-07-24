@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  <title>{{ object|yesno:"Update,Create" }} dish type</title>
+{% endblock %}
+
+{% block content %}
+  <h1>{{ object|yesno:"Update,Create" }} dish type</h1>
+
+  <form method="post" action="" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <input class="btn btn-primary" type="submit" value="Create">
+    <a onclick="goBack()" class="btn btn-danger">Cancel</a>
+  </form>
+{% endblock %}
