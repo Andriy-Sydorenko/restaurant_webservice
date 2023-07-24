@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>{{ cook.first_name }} {{ cook.last_name }}</title>
+{% endblock %}
+
+{% block content %}
+  <h2>
+    Full name: {{ cook.first_name }} {{ cook.last_name }}
+    {% if user.is_superuser or user.id == cook.id %}
+      <a class="btn btn-primary" href="{% url 'restaurant:cook-update' pk=cook.id %}">Edit</a>
+      <a class="btn btn-danger" href="{% url 'restaurant:cook-delete' pk=cook.id %}">Delete</a>
+    {% endif %}
+  </h2>
+  <h5>Username: {{ cook.username }}</h5>
+  <p><strong>Years of experience: {{ cook.years_of_experience }}</strong></p>
+
+  <div class="ml-3">
+    <h3>Dishes</h3>
+    {% for dish in cook.dishes.all %}
+      <hr>
+      <p class="text-muted"><strong>ID: </strong>{{ dish.id }}</p>
+      <p><strong>Name: </strong><a class="list-item" href="{{ dish.get_absolute_url }}">{{ dish.name }}</a></p>
+      <p><strong>Price: </strong>{{ dish.price }}</p>
+      <p><strong>Dish type: </strong>{{ dish.dish_type }}</p>
+    {% empty %}
+      <h5>No dishes!</h5>
+    {% endfor %}
+
+  </div>
+{% endblock %}

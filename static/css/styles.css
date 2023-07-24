@@ -1,0 +1,153 @@
+body {
+  margin: 20px;
+  padding: 40px 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  position: relative;
+}
+
+.welcome-big {
+  font-size: 36px;
+  color: white;
+  margin-top: 37px;
+  text-align: center;
+}
+.welcome-little {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+.horizontal-line {
+  border-radius: 5px;
+  border: 4px solid white;
+  width: 40%;
+  margin: 0 auto;
+}
+.welcome-text {
+  font-size: 20px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+:is(th, td, li, label, p, h1, h2, h3, h4, h5, h6) {
+  color: white;
+}
+
+a {
+  color: #d2b48c;
+  transition: color 0.3s;
+}
+a:hover{
+  color: wheat;
+}
+
+a.update {
+  color: dodgerblue;
+}
+a.delete {
+  color: red;
+}
+a.list-item {
+  color: #00b2b2;
+}
+
+body:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  text-align: left;
+  padding: 40px 0 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.5em;
+  line-height: 1;
+  letter-spacing: 3px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: #e8e8e8;
+  color: #222;
+}
+
+.topmenu > li {
+  position: relative;
+}
+
+.topmenu > li > a:before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 100%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-20px, -50%);
+  opacity: 0;
+  transition: .3s;
+}
+
+.topmenu li:hover a:before {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 4;
+  left: 100%;
+  top: 50%;
+  padding: 15px 20px;
+  margin-left: 5px;
+  background: black;
+  border-radius: 5px;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(20px, -50%);
+  transition: .3s;
+}
+
+.topmenu > li:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.submenu a {
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  transition: .3s linear;
+  display: block;
+}
+
+.submenu a:hover {
+  background: #e8e8e8;
+  color: #222;
+}

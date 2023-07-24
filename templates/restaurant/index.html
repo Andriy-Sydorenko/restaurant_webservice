@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  <title>Home Page</title>
+{% endblock %}
+
+{% block content %}
+   <h1 class="welcome-big">Welcome</h1>
+  <hr class="horizontal-line">
+  <p class="welcome-little">Our website offers a platform for chefs to register, share recipes, and explore a diverse range of dishes..</p>
+
+  <p class="welcome-text">
+    Welcome to our website! Here, you can register as a chef, add your delicious recipes, and explore
+    <a href="{% url 'restaurant:dish-list' %}">a wide range of culinary delights</a>
+    . Whether you're a professional chef or a passionate home cook, this platform is designed to showcase your culinary skills and share your mouthwatering creations with
+    <a href="{% url 'restaurant:cook-list' %}">food enthusiasts from around the world</a>.
+  </p>
+  <br>
+  <p class="welcome-text">Registering as a chef is a simple process that allows you to
+    {% if not user.is_authenticated %}
+    <a href="{% url 'restaurant:signup' %}">create your own personalized account</a>
+    {% else %}
+      create your own personalized account
+    {% endif %}
+    . Once registered, you'll have access to your dashboard, where you can manage your profile and add your unique recipes to our ever-growing collection of dishes.</p>
+  <br>
+  <p class="welcome-text">Adding a new recipe is a breeze! Simply provide the dish's name, a captivating description, and a list of ingredients and cooking instructions. You can also upload enticing images to give fellow users a visual feast of what's in store. Sharing your culinary expertise has never been this easy!</p>
+  <br>
+  <p class="welcome-text">Are you curious about a particular recipe? Click on any dish's name to view its detailed description. Discover the story behind the creation, explore the flavors, and find useful tips and tricks from the chef who crafted the masterpiece.</p>
+  <br>
+  <p class="welcome-text">Whether you're here to find inspiration for your next culinary adventure or to share your passion for cooking, we hope you enjoy this platform dedicated to celebrating the art of food. Join our community of talented chefs and enthusiastic food lovers today!</p>
+{% endblock %}

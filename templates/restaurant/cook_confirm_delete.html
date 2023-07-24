@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  <title>Delete account</title>
+{% endblock %}
+
+{% block content %}
+  {% if user.is_superuser or user.id is cook.id %}
+    <h1>Delete account</h1>
+    {% if user.is_superuser %}
+  <h4>Are you sure you want to delete this account: <strong>{{ cook }}</strong>?</h4>
+      {% else %}
+        <h4>Are you sure you want to delete your account?</h4>
+      {% endif %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <input id="delete-btn" type="submit" value="Yes, delete" class="btn btn-danger">
+    <a href="{% url 'restaurant:cook-detail' pk=cook.id %}" class="btn btn-primary">No, cancel</a>
+
+  </form>
+  {% else %}
+    <h1>You don't have permission to delete users!</h1>
+    <a class="btn btn-primary" href="{% url 'restaurant:index' %}">Back to Home</a>
+  {% endif %} 
+
+
+{% endblock %}
