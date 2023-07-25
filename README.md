@@ -49,16 +49,12 @@ A quick introduction of the setup you need to get run a project.
 
 ## Links
 
-Even though this information can be found inside the project on machine-readable
-format like in a .json file, it's good to include a summary of most useful
-links to humans using your project. You can include links like:
-
 - Repository: https://github.com/Andriy-Sydorenko/restaurant_webservice
 - Issue tracker: https://github.com/Andriy-Sydorenko/restaurant_webservice/issues
   - In case of sensitive bugs like security vulnerabilities, please contact
     sidorenkoandrij217@gmail.com directly instead of using issue tracker. I value your effort
     to improve the security and privacy of this project!
-- Here is the link to the deployed website: https://www.example.com
+- Here is the link to the deployed website: https://restaurant-webservice.onrender.com
 
 
 ## Licensing
