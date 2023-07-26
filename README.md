@@ -26,7 +26,7 @@ It is not necessary to create a new account, you can use test one.
 
 A quick introduction of the setup you need to get run a project.
 1. Fork a repo.
-2. Use this command ```git clone [the-link-from-your-forked-repo](https://github.com/Andriy-Sydorenko/restaurant_webservice.git)```. 
+2. Use this command ```git clone https://github.com/Andriy-Sydorenko/restaurant_webservice.git```. 
    - You can get the link by clicking the Clone or download button in your repo.
 3. Open the project folder in your IDE.
 4. Open a terminal in the project folder. 
