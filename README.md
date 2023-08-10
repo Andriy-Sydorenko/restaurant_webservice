@@ -62,10 +62,15 @@ A quick introduction of the setup you need to get run a project.
     python manage.py runserver 
     ```
 
+## Links
+
+- Repository: https://github.com/Andriy-Sydorenko/restaurant_webservice
+- Issue tracker: https://github.com/Andriy-Sydorenko/restaurant_webservice/issues
+  - In case of sensitive bugs like security vulnerabilities, please contact
+    sidorenkoandrij217@gmail.com directly instead of using issue tracker. I value your effort
+    to improve the security and privacy of this project!
+- Here is the link to the deployed website: https://restaurant-webservice.onrender.com
+
+
 ## Licensing
-
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
-
 "The code in this project is licensed under MIT license."
