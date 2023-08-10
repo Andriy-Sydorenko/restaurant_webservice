@@ -58,9 +58,4 @@ A quick introduction of the setup you need to get run a project.
 
 
 ## Licensing
-
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
-
 "The code in this project is licensed under MIT license."
