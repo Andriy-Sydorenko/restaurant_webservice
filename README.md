@@ -43,21 +43,27 @@ A quick introduction of the setup you need to get run a project.
     source venv/bin/activate
     pip install -r requirements.txt
     ```
-6. Run create migration file, using 
-    ```shell
-    python manage.py makemigrations
-    ```
-    Then migrate file, using
+---
+> Note: project supports PostgreSQL databases, if you want to switch from sqlite to postgresql, 
+> check [settings.py](restaurant_service/settings.py) file, there's already the solution for this.
+---
+6. Configure .env file as shown in the [.env.sample](.env.sample) file (DON'T use quotes for the parameters, otherwise they will not work)
+
+
+7. Migrate existing migrations files, using
     ```shell
     python manage.py migrate
     ```
-7. Create superuser to see extended functionality of the website:
+
+
+8. Create superuser to see extended functionality of the website:
     ```shell
     python manage.py createsuperuser
     ```
     Also, you can create a regular user, using registration form on the website.
 
-8. Then, to run a project, use this command:
+
+9. Then, to run a project, use this command:
     ```shell
     python manage.py runserver 
     ```
@@ -71,6 +77,14 @@ A quick introduction of the setup you need to get run a project.
     to improve the security and privacy of this project!
 - Here is the link to the deployed website: https://restaurant-webservice.onrender.com
 
+## DB Structure
+![img.png](readme_images/db_structure.png)
 
+## Website screenshots
+![img_1.png](readme_images/home_page.png)
+![img.png](readme_images/admin_home_page.png)
+![img.png](readme_images/dishes.png)
+![img_1.png](readme_images/cooks.png)
+![img_2.png](readme_images/dish_types.png)
 ## Licensing
 "The code in this project is licensed under MIT license."
