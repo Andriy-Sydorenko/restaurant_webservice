@@ -24,7 +24,7 @@
         <th>Description</th>
         <th>Price</th>
         <th>Dish type</th>
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <th>Update</th>
         <th>Delete</th>
         {% endif %}
@@ -54,17 +54,6 @@
           <td>
             <a class="delete" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
           </td>
-        {% elif user.is_authenticated and user in dish.cooks.all%}
-          <td>
-            <a class="update" href="{% url 'restaurant:dish-update' pk=dish.id %}">Update</a>
-          </td>
-          <td>
-            <a class="delete" href="{% url 'restaurant:dish-delete' pk=dish.id %}">Delete</a>
-          </td>
-        {% elif user.is_authenticated and user not in dish.cooks.all%}
-          {# it should be empty, for table to look properly #}
-          <td></td>
-          <td></td>
         {% endif %}
       </tr>
     {% endfor %}
