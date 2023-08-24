@@ -48,7 +48,17 @@ A quick introduction of the setup you need to get run a project.
 > check [settings.py](restaurant_service/settings.py) file, there's already the solution for this.
 ---
 6. Configure .env file as shown in the [.env.sample](.env.sample) file (DON'T use quotes for the parameters, otherwise they will not work)
-
+<details>
+<summary>Parameters for .env file:</summary>
+  
+- **POSTGRES_DB**: `Name of your DB`
+- **POSTGRES_DB_PORT**: `Port of your DB`
+- **POSTGRES_USER**: `Name of your user for DB`
+- **POSTGRES_PASSWORD**: `Your password in DB`
+- **POSTGRES_HOST** `Host of your DB`
+- **DJANGO_DEBUG**: `Set True if you want debug menu to be on, and False for debug menu to be off`
+- **DJANGO_SECRET_KEY**: `Your django secret key, you can generate one on https://djecrety.ir`
+</details>
 
 7. Migrate existing migrations files, using
     ```shell
@@ -86,5 +96,6 @@ A quick introduction of the setup you need to get run a project.
 ![img.png](readme_images/dishes.png)
 ![img_1.png](readme_images/cooks.png)
 ![img_2.png](readme_images/dish_types.png)
+![img.png](readme_images/user_page.png)
 ## Licensing
 "The code in this project is licensed under MIT license."
